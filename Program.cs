@@ -18,6 +18,24 @@ class ClubElections
         new Dictionary<string, object> { {"id", 8}, {"name", "Hank"},   {"grade", 11}, {"favoriteColor", null} },
     };
 
+    static void NewMember()
+    {
+        members.Add(new Dictionary<string, object>
+        {
+            {"id", 9},
+            {"name", "Isabel"},
+            {"grade", 8},
+            {"favoriteColor", "purple"}
+        });
+
+        foreach (var member in members)
+        {
+            Console.WriteLine(member["name"]);
+        }
+    }
+
+
+
     // ── Votes ───────────────────────────────────────────────
     // Key = voter name, Value = candidate name they voted for
     static Dictionary<string, string> votes = new Dictionary<string, string>
@@ -30,6 +48,42 @@ class ClubElections
         {"Fay", "Grace"},
         // Grace and Hank did not vote
     };
+
+    static void NewVote()
+    {
+        // Record Isabel's vote
+        votes["Isabel"] = "Beth";
+
+        // Print all votes
+        foreach (var vote in votes)
+        {
+            Console.WriteLine($"{vote.Key} voted for {vote.Value}");
+        }
+    }
+
+static void ChangeVote()
+    {
+        // Change Isabel's vote
+        votes["Isabel"] = "Dana";
+
+        // Print all votes
+        foreach (var vote in votes)
+        {
+            Console.WriteLine($"{vote.Key} voted for {vote.Value}");
+        }
+    }
+
+    static void NoVote()
+    {
+        // Remove Isabel's vote
+        votes.Remove("Isabel");
+
+        // Print remaining votes
+        foreach (var vote in votes)
+        {
+            Console.WriteLine($"{vote.Key} voted for {vote.Value}");
+        }
+    }
 
     // ── Helper Methods (YOU COMPLETE THESE) ─────────────────
 
@@ -177,19 +231,37 @@ static void MembersWithNoFavoriteColor()
         Console.WriteLine("=== Club Elections ===" );
         Console.WriteLine("---- Member Question Answers (1-7) ----" );
         Console.WriteLine(GetMemberName(5));
+        Console.WriteLine("----" );
         Console.WriteLine(GetMemberFavoriteColor("Eli"));
+        Console.WriteLine("----" );
         MembersWithBlueFavoriteColor();
+        Console.WriteLine("----" );
         MembersWithNoFavoriteColor();
+        Console.WriteLine("----" );
         Console.WriteLine(members.Count);
+        Console.WriteLine("----" );
         Console.WriteLine(CountTenthGraders());
         Console.WriteLine("---- Member Question Answers (8-13) ----" );
         Console.WriteLine(GetVote("Fay"));
+        Console.WriteLine("----" );
         Console.WriteLine(GetVote("Beth"));
+        Console.WriteLine("----" );
         VotesForBeth();
+        Console.WriteLine("----" );
         SelfVote();
+        Console.WriteLine("----" );
         WhoDidNotVote();
+        Console.WriteLine("----" );
         ElectionResults();
         Console.WriteLine("Winner is Beth" );
+        Console.WriteLine("---- Member Question Answers (14-17) ----" );
+        NewMember();
+        Console.WriteLine("----" );
+        NewVote();
+        Console.WriteLine("----" );
+        ChangeVote();
+        Console.WriteLine("----" );
+        NoVote();
 
         // ---- Member Questions (1-7) ----
         // 1. Who is member #5?
